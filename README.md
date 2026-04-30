@@ -145,6 +145,14 @@ data-warehouse-project/
 ---
 
 
+## 🙏 Acknowledgments
+
+This project was built following the guidance of **[Baraa Khatib Salkini](https://www.datawithbaraa.com/)**, whose structured teaching approach and hands-on methodology made complex data warehousing concepts accessible and practical. A huge thank you for the outstanding mentorship!
+
+> **Disclaimer:** This repository represents my own implementation of the project for learning and portfolio purposes. All code and documentation were written by me as part of the course. If you're interested in the full curriculum, I highly recommend visiting [datawithbaraa.com](https://www.datawithbaraa.com/).
+
+---
+
 ## 🛡️ License
 
 This project is licensed under the [MIT License](LICENSE). You can use, modify, and share this project with proper attribution.
