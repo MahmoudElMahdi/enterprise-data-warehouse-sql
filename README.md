@@ -72,32 +72,75 @@ Develop SQL-based analytics to deliver detailed insights into:
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
 
+#### Analytics Roadmap
+![Analytics Roadmap](docs/analytics_roadmap.png)
+
+The analytics phase follows a structured roadmap split into two tracks:
+
+- **Exploratory Data Analysis (EDA)** — Database exploration, dimensions, date ranges, measures, magnitude, and ranking analysis.
+- **Advanced Analytics** — Change-over-time trends, cumulative analysis, performance analysis, part-to-whole proportions, data segmentation, and final reporting.
+
+Each step is implemented as a standalone SQL script in the [`scripts/analytics/`](scripts/analytics/) folder.
+
 
 ## 📂 Repository Structure
 ```
 data-warehouse-project/
 │
 ├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
+│   ├── source_crm/                     # CRM source system data
+│   │   ├── cust_info.csv               # Customer information
+│   │   ├── prd_info.csv                # Product information
+│   │   └── sales_details.csv           # Sales transaction details
+│   └── source_erp/                     # ERP source system data
+│       ├── CUST_AZ12.csv               # Customer data
+│       ├── LOC_A101.csv                # Location data
+│       └── PX_CAT_G1V2.csv            # Product category data
 │
 ├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniques and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
+│   ├── analytics_roadmap.png           # Visual roadmap of the analytics phase
+│   ├── data_architecture.png           # Project architecture diagram
 │   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
+│   ├── data_flow.drawio.png            # Data flow diagram
+│   ├── data_integration.drawio.png     # Data integration model diagram
+│   ├── data_model.drawio.png           # Data models diagram (star schema)
+│   └── naming_conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
 ├── scripts/                            # SQL scripts for ETL and transformations
+│   ├── init_database.sql               # Database initialization script
 │   ├── bronze/                         # Scripts for extracting and loading raw data
+│   │   ├── ddl_bronze.sql              # Bronze layer table definitions
+│   │   └── proc_load_bronze.sql        # Stored procedure to load raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
+│   │   ├── ddl_silver.sql              # Silver layer table definitions
+│   │   └── proc_load_silver.sql        # Stored procedure for data cleansing & transformation
 │   ├── gold/                           # Scripts for creating analytical models
+│   │   └── ddl_gold.sql                # Gold layer views / table definitions (star schema)
+│   └── analytics/                      # SQL-based analytics and reporting scripts
+│       ├── 01_dimensions_exploration.sql
+│       ├── 02_date_range_exploration.sql
+│       ├── 03_measures_exploration.sql
+│       ├── 04_magnitude_analysis.sql
+│       ├── 05_ranking_analysis.sql
+│       ├── 06_change_over_time_analysis.sql
+│       ├── 07_cumulative_analysis.sql
+│       ├── 08_performance_analysis.sql
+│       ├── 09_part_to_whole_analysis.sql
+│       ├── 10_data_segmentation.sql
+│       ├── 11_report_customers.sql
+│       └── 12_report_products.sql
 │
-├── tests/                              # Test scripts and quality files
+├── tests/                              # Test scripts and quality checks
+│   ├── quality_checks_gold.sql                         # Gold layer quality checks
+│   ├── silver_crm_customer_table_quality_check.sql     # Silver CRM customer quality check
+│   ├── silver_crm_product_table_quality_check.sql      # Silver CRM product quality check
+│   ├── silver_crm_sales_table_quality_check.sql        # Silver CRM sales quality check
+│   ├── silver_erp_category_table_quality_check.sql     # Silver ERP category quality check
+│   ├── silver_erp_customer_table_quality_check.sql     # Silver ERP customer quality check
+│   └── silver_erp_location_table_quality_check.sql     # Silver ERP location quality check
 │
 ├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+└── LICENSE                             # License information for the repository
 ```
 ---
 
