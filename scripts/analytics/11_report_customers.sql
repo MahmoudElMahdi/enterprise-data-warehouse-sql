@@ -24,6 +24,7 @@ Highlights:
 -- =============================================================================
 -- Create Report: gold.report_customers
 -- =============================================================================
+USE DataWarehouse
 IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
     DROP VIEW gold.report_customers;
 GO
@@ -42,7 +43,7 @@ f.sales_amount,
 f.quantity,
 c.customer_key,
 c.customer_number,
-CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+CONCAT(c.frist_name, ' ', c.last_name) AS customer_name,
 DATEDIFF(year, c.birthdate, GETDATE()) age
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
